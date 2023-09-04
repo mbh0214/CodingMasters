@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            height: 2500px;
+        }
+        #top-header {
+            width: 100%;
+            height: auto;
+            display: inline-block;
+            text-align: center;
+            background-color: white;
+            border-bottom: 1px solid black;
+        }
+        #title {
+            display: inline-block;
+            width: 45%;
+            font-size: 80px;
+            font-weight: 600;
+            margin-top: 30px;
+            margin-bottom: -50px;
+        }
+        #title img {
+            height: 150px;
+        }
+        #icons {
+            position: absolute;
+            width: 20%;
+            display: flex;
+            top: 70px;
+            right: 1%;
+            justify-content: space-around;
+        }
+        
+        .search {
+            position: relative;
+            text-align: center;
+            width: 400px;
+            margin: 0 auto;
+        }
+        .search input {
+            width: 100%;
+            height: 30px;
+            border-radius: 30px;
+            border: 1px solid #bbb;
+            outline: 1px solid #bbb;
+            margin: 10px 0;
+            padding: 10px 12px;
+            font-size: 30px;
+            background-color: rgb(218, 241, 225);
+        }
+        .search :focus {
+            border: 1px solid rgb(133, 133, 133);
+            outline: 1px solid rgb(133, 133, 133);
+        }
+        #search-icon {
+            position: absolute;
+            right: -5%;
+            top: 20%;
+            width: 40px;
+        }
+        #search-icon img {
+            width: 100%;
+        }
+        #header-menus {
+            display: inline-flex;
+            width: 60%;
+            height: 50px;
+            justify-content: space-around;
+        }
+        .menu {
+            margin-top: 1%;
+            font-size: 25px;
+            font-weight:bold
+        }
+        #categories {
+            border-bottom: 1px solid black;
+            height: 60px;
+            width: 70%;
+            margin: 30px auto 30px auto;
+            display: flex;
+            font-size: 18px;
+        }
+        .category {
+            margin-left: 2%;
+            margin-right: 2%;
+        }
+        #books {
+            width: 70%;
+            height: auto;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .book {
+            margin: 2%;
+            width: 25%;
+        }
+        .book img {
+            width: 100%;
+        }
+        .book .book-name {
+            margin: 10px auto 25px auto;
+            font-weight: bold;
+            width: 100%;
+            display: block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .book .book-author {
+            width: 100%;
+            display: block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .book .price {
+            width: 100%;
+            display: block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        #paging {
+            margin: 20px auto auto auto;
+            width: 200px;
+            height: 30px;
+            display: flex;
+            justify-content: space-between;
+            text-align: center;
+        }
+        #recommend-banner {
+            background-color: white;
+            width: 14%;
+            height: 0;
+            text-align: center;
+            position: sticky;
+            top: 5%;
+            left: 0;
+        }
+        #recommend-banner img {
+            width: 100%;
+        }
+        .recommend {
+            margin-top: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .recommend-title{
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        #up {
+            position: fixed;
+            right: 10px;
+            bottom: 20px;
+        }
+    </style>
+    <script>
+        window.addEventListener("load", function(){
+            bind();
+        })
+
+        function bind(){
+                let html = '';
+                
+                for(let i = 0; i < 15; i++){
+                    html += '<div class="book">';
+                    html += '    <div>';
+                    html += '        <img src="img/noun-book-1980248.png">';
+                    html += '    </div>';
+                    html += '    <div class="book-name">';
+                    html += '        생명을 불어';
+                    html += '    </div>';
+                    html += '    <div class="book-author">';
+                    html += '        공주님 / 프린세스메이커';
+                    html += '    </div>';
+                    html += '    <div class="price">';
+                    html += '        30,000';
+                    html += '    </div>';
+                    html += '</div>';
+                }
+                
+                document.querySelector("#books").innerHTML = html;
+
+                
+
+
+        }       
+    </script>
+</head>
+<body>
+    <div id="top-header">
+        <div id="title"><img src="img/title_bookmasters.PNG" alt=""></div>
+        <div id="icons">
+            <div class="icon">아이콘</div>
+            <div class="icon">아이콘</div>
+            <div class="icon">아이콘</div>
+        </div>
+        <div class="search">
+            <input type="text">
+            <div id="search-icon"><img src="img/searchicon.png"></div>
+        </div>
+        <div id="header-menus">
+            <div class="menu">베스트</div>
+            <div class="menu">신제품</div>
+            <div class="menu">이벤트</div>
+            <div class="menu">고객지원</div>
+        </div>
+    </div>
+    <div id="recommend-banner">
+        <div id="recommend-best">
+            <div class="recommend">BEST</div><br>
+            <img src="img/noun-book-1980248.png"><br>
+            <div class="recommend-title">생명을 불어</div><br>
+        </div>
+        
+        <div id="recommend-new">
+            <div class="recommend">NEW</div><br>
+            <img src="img/noun-book-1980248.png"><br>
+            <div class="recommend-title">생명을 불어</div><br>
+        </div>
+    </div>
+    <div id="categories">
+        <div style="font-weight: bold;">정렬</div>
+        <div class="category">베스트셀러</div>
+        <div>/</div>
+        <div class="category">신간</div>
+        <div>/</div>
+        <div class="category">추천순</div>
+        <div>/</div>
+        <div class="category">별점순</div>
+    </div>
+    <div id="books">
+        <!--책 목록-->
+    </div>
+    <div id="paging">
+        <div><</div>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>...</div>
+        <div>></div>
+    </div>
+    <a id="up" href="#">
+        위로
+    </a>
+</body>
+</html>

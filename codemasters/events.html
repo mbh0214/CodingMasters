@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            height: 3000px;
+        }
+        #top-header {
+            width: 100%;
+            height: auto;
+            display: inline-block;
+            text-align: center;
+
+            background-color: white;
+            border-bottom: 1px solid black;
+        }
+        #title {
+            display: inline-block;
+            width: 45%;
+            font-size: 80px;
+            font-weight: 600;
+            margin-top: 30px;
+            margin-bottom: -50px;
+        }
+        #title img {
+            height: 150px;
+        }
+        #icons {
+            position: absolute;
+            width: 20%;
+            display: flex;
+            top: 70px;
+            right: 1%;
+            justify-content: space-around;
+        }
+        
+        .search {
+            position: relative;
+            text-align: center;
+            width: 400px;
+            margin: 0 auto;
+        }
+        .search input {
+            width: 100%;
+            height: 30px;
+            border-radius: 30px;
+            border: 1px solid #bbb;
+            outline: 1px solid #bbb;
+            margin: 10px 0;
+            padding: 10px 12px;
+            font-size: 30px;
+            background-color: rgb(218, 241, 225);
+        }
+        .search :focus {
+            border: 1px solid rgb(133, 133, 133);
+            outline: 1px solid rgb(133, 133, 133);
+        }
+        #search-icon {
+            position: absolute;
+            right: -5%;
+            top: 20%;
+            width: 40px;
+        }
+        #search-icon img {
+            width: 100%;
+        }
+        #header-menus {
+            display: inline-flex;
+            width: 60%;
+            height: 50px;
+            justify-content: space-around;
+        }
+        .menu {
+            margin-top: 1%;
+            font-size: 25px;
+            font-weight:bold
+        }
+        #ad-1 {
+            margin: 0 auto;
+            border: 1px solid #bbb;
+            width: 90%;
+            height: 150px;
+            text-align: center;
+            line-height: 150px;
+        }
+        #events {
+            width: 80%;
+            margin: 30px auto;
+        }
+        .event {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between
+        }
+        .event-img {
+            width: 100%;
+            height: 150px;
+            overflow: hidden;
+        }
+        .event-name {
+            width: 65%;
+            height: 50px;
+            font-size: 20px;
+            font-weight: bold;
+            line-height: 40px;
+            margin-left: 10px;
+        }
+        .event-post_date {
+            width: 25%;
+            height: 50px;
+            text-align: right;
+            line-height: 40px;
+            margin-right: 10px;
+        }
+        #paging {
+            margin: 20px auto auto auto;
+            width: 200px;
+            height: 30px;
+            display: flex;
+            justify-content: space-between;
+            text-align: center;
+        }
+        #up {
+            position: fixed;
+            right: 10px;
+            bottom: 20px;
+        }
+
+        /* 팝업 */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            
+            /* 숨기기 */
+            z-index: -1;
+            opacity: 0;
+        }
+
+        .show {
+            opacity: 1;
+            z-index: 1000;
+            transition: all .5s;
+        }
+
+        .window {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .popup {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #ffffff;
+            box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3);
+            
+            /* 임시 지정 */
+            width: 1000px;
+            height: 700px;
+            
+            /* 초기에 약간 아래에 배치 */
+            transform: translate(-50%, -40%);
+        }
+
+        .show .popup {
+            transform: translate(-50%, -50%);
+            transition: all .5s;
+        }
+        .close {
+            position: absolute;
+            margin-right: 30px;
+            top: 30px;
+            right: 15px;
+            z-index: 100;
+        }
+        .close img {
+            width: 30px;
+            height: 30px;
+        }
+        .event-popup {
+            width: 100%;
+            height: 100%;
+            display: flex;
+        }
+        .event-popup-img {
+            width: 60%;
+        }
+        .event-popup-img img {
+            width: 100%;
+            height: 100%;
+        }
+        .event-popup-contents {
+            width: 40%;
+        }
+        .event-popup-name {
+            margin: 10px 30px;
+            font-size: 30px;
+        }
+        .event-popup-post_date {
+            margin: 10px 30px;
+        }
+        .event-popup-detail {
+            margin: 10px 30px;
+        }
+    </style>
+ 
+</head>
+<body>
+    <div id="top-header">
+        <div id="title"><img src="img/title_bookmasters.PNG" alt=""></div>
+        <div id="icons">
+            <div class="icon">아이콘</div>
+            <div class="icon">아이콘</div>
+            <div class="icon">아이콘</div>
+        </div>
+        <div class="search">
+            <input type="text">
+            <div id="search-icon"><img src="img/searchicon.png"></div>
+        </div>
+        <div id="header-menus">
+            <div class="menu">베스트</div>
+            <div class="menu">신제품</div>
+            <div class="menu">이벤트</div>
+            <div class="menu">고객지원</div>
+        </div>
+    </div>
+    <div id="ad-1">광고란</div>
+    <div id="events">
+        <!--이벤트 목록-->   
+        <div class="event show" id="event1">
+            <div class="event-img">
+                <img src="evt-img/evt.png">
+            </div>
+            <div class="event-name">
+                이벤트이름
+            </div>
+            <div class="event-post_date">
+                날짜
+            </div>
+        </div>
+        <div class="event show" id="event2">
+            <div class="event-img">
+                <img src="evt-img/evt.png">
+            </div>
+            <div class="event-name">
+                이벤트이름
+            </div>
+            <div class="event-post_date">
+                날짜
+            </div>
+        </div>
+        <div class="event show" id="event3">
+            <div class="event-img">
+                <img src="evt-img/evt.png">
+            </div>
+            <div class="event-name">
+                이벤트이름
+            </div>
+            <div class="event-post_date">
+                날짜
+            </div>
+        </div>
+        <div class="event show" id="event4">
+            <div class="event-img">
+                <img src="evt-img/evt.png">
+            </div>
+            <div class="event-name">
+                이벤트이름
+            </div>
+            <div class="event-post_date">
+                날짜
+            </div>
+        </div>
+        <div class="event show" id="event5">
+            <div class="event-img">
+                <img src="evt-img/evt.png">
+            </div>
+            <div class="event-name">
+                이벤트이름
+            </div>
+            <div class="event-post_date">
+                날짜
+            </div>
+        </div>
+    </div>
+    <div id="paging">
+        <div><</div>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>...</div>
+        <div>></div>
+    </div>
+    <a id="up" href="#">
+        위로
+    </a>
+
+    <!-- 팝업 -->
+    <div class="background">
+        <div class="window">
+            <div class="close"><img src="evt-img/X.png"></div>
+            <div class="popup">
+            <div class="event-popup">
+              <div class="event-popup-img">
+                  <img src="evt-img/evt.png">
+              </div>
+              <div class="event-popup-contents">
+                  <div class="event-popup-name">
+                      이벤트 이름
+                  </div>
+                  <div class="event-popup-post_date">
+                      날짜
+                  </div>
+                  <div class="event-popup-detail">
+                      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate porro assumenda fugit, illum neque, quibusdam mollitia veritatis sed optio iure reprehenderit! Est molestias sapiente atque asperiores fugit ducimus nihil eveniet?
+                      Lorem ipsum dolor sit, amet consectetur adipisicing elit. A, odio doloribus expedita voluptatem recusandae, reiciendis aliquid quas ducimus ratione quod necessitatibus eligendi dicta! Voluptates quisquam, asperiores quod corrupti veritatis sequi.
+                      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellat quod aut accusantium voluptas. Voluptatum error obcaecati fugiat numquam rem, cum incidunt eum, enim officiis inventore sunt aliquid quia nam quos.
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. At, alias commodi aperiam fuga ullam quibusdam saepe perspiciatis praesentium animi corporis quisquam laboriosam voluptate repellat exercitationem necessitatibus natus, in accusamus beatae!
+                  </div>
+              </div>
+          </div>
+      </div>
+</body>
+<script>
+    function show () {
+        document.querySelector(".background").className = "background show";
+    }
+    function close () { 
+        document.querySelector(".background").className = "background";
+    }
+    for (var i = 0; i < 5; i++) {
+        document.querySelectorAll(".show")[i].addEventListener('click', show);
+    }
+    document.querySelector(".close").addEventListener('click', close);
+</script>
+</html>

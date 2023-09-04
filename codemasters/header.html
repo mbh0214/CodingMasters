@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #top-header {
+            width: 100%;
+            height: auto;
+            display: inline-block;
+            text-align: center;
+
+            background-color: white;
+            border-bottom: 1px solid black;
+        }
+        #title {
+            display: inline-block;
+            width: 45%;
+            font-size: 80px;
+            font-weight: 600;
+            margin-top: 30px;
+            margin-bottom: -50px;
+        }
+        #title img {
+            height: 150px;
+        }
+        #icons {
+            position: absolute;
+            width: 20%;
+            display: flex;
+            top: 70px;
+            right: 1%;
+            justify-content: space-around;
+        }
+        
+        .search {
+            position: relative;
+            text-align: center;
+            width: 400px;
+            margin: 0 auto;
+        }
+        .search input {
+            width: 100%;
+            height: 30px;
+            border-radius: 30px;
+            border: 1px solid #bbb;
+            outline: 1px solid #bbb;
+            margin: 10px 0;
+            padding: 10px 12px;
+            font-size: 30px;
+            background-color: rgb(218, 241, 225);
+        }
+        .search :focus {
+            border: 1px solid rgb(133, 133, 133);
+            outline: 1px solid rgb(133, 133, 133);
+        }
+        #search-icon {
+            position: absolute;
+            right: -5%;
+            top: 20%;
+            width: 40px;
+        }
+        #search-icon img {
+            width: 100%;
+        }
+        #header-menus {
+            display: inline-flex;
+            width: 60%;
+            height: 50px;
+            justify-content: space-around;
+        }
+        .menu {
+            margin-top: 1%;
+            font-size: 25px;
+            font-weight:bold
+        }
+
+        @media screen and (max-width: 600px){
+            #top-header {
+                text-align: left;
+            }
+            #title {
+                margin-top: 10px;
+                margin-left: 80px;
+            }
+            #title img {
+                height: 120px;
+            }
+            #icons {
+                width: 40%;
+                margin-top: 10px;
+            }
+            
+            .search {
+                position: relative;
+                text-align: center;
+                width: 400px;
+                margin: 0 auto;
+            }
+            .search input {
+                width: 100%;
+                height: 20px;
+                border-radius: 30px;
+                border: 1px solid #bbb;
+                outline: 1px solid #bbb;
+                margin: 10px 0;
+                padding: 10px 12px;
+                font-size: 30px;
+                background-color: rgb(218, 241, 225);
+            }
+            .search :focus {
+                border: 1px solid rgb(133, 133, 133);
+                outline: 1px solid rgb(133, 133, 133);
+            }
+            #search-icon {
+                position: absolute;
+                right: -5%;
+                top: 20%;
+                width: 40px;
+            }
+            #search-icon img {
+                width: 100%;
+            }
+            #header-menus {
+                display: inline-flex;
+                width: 100%;
+                height: 50px;
+                justify-content: space-around;
+            }
+            .menu {
+            font-size: 25px;
+        }
+
+        }
+
+    </style>
+ 
+        
+</head>
+<body>
+    <div id="top-header">
+        <div id="title"><img src="img/title_bookmasters.PNG" alt=""></div>
+        <div id="icons">
+            <div class="icon">아이콘</div>
+            <div class="icon">아이콘</div>
+            <div class="icon">아이콘</div>
+        </div>
+        <div class="search">
+            <input type="text">
+            <div id="search-icon"><img src="img/searchicon.png"></div>
+        </div>
+        <div id="header-menus">
+            <div class="menu">베스트</div>
+            <div class="menu">신제품</div>
+            <div class="menu">이벤트</div>
+            <div class="menu">고객지원</div>
+        </div>
+    </div>
+</body>
+</html>
